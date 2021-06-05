@@ -12,6 +12,16 @@
     - { role: kubespray-defaults }
     - { role: bastion-ssh-config, tags: ["localhost", "bastion"] }
 
+
+- hosts: nfs
+  gather_facts: True
+  any_errors_fatal: "{{ any_errors_fatal | default(true) }}"
+  environment: "{{ proxy_disable_env }}"
+  roles:
+    - { role: kubespray-defaults }
+    - { role: ansible-role-nfs }
+
+
 - hosts: k8s_cluster:etcd
   strategy: linear
   any_errors_fatal: "{{ any_errors_fatal | default(true) }}"

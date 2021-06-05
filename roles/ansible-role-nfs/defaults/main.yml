@@ -1,0 +1,6 @@
+---
+nfs_exports: 
+  - /srv/nfs4        gss/krb5i(rw,sync,fsid=0,crossmnt,no_subtree_check)
+
+nfs_rpcbind_state: started
+nfs_rpcbind_enabled: true
