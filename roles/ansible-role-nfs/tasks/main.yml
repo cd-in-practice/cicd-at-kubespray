@@ -23,7 +23,11 @@
   when: ansible_os_family == 'Debian'
 
 - name: Ensure directories to export exist
-  file: 'path="{{ item.strip().split()[0] }}" state=directory'
+  file: 
+    path: "{{ item.strip().split()[0] }}" 
+    state: directory
+    user: nfsnobody
+    group: nfsnobody
   with_items: "{{ nfs_exports }}"
 
 - name: Copy exports file.
