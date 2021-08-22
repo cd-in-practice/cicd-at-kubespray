@@ -9,7 +9,7 @@ imagePullSecrets: []
 
 nfs:
   server: 172.18.8.103
-  path: /
+  path: /persistentvolumes
   mountOptions:
   volumeName: nfs-subdir-external-provisioner-root
 

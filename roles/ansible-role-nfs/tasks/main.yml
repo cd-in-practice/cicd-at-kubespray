@@ -26,9 +26,9 @@
   file: 
     path: "{{ item.strip().split()[0] }}" 
     state: directory
-    user: nfsnobody
+    owner: nfsnobody
     group: nfsnobody
-  with_items: "{{ nfs_exports }}"
+  loop: "{{ nfs_exports }}"
 
 - name: Copy exports file.
   template:

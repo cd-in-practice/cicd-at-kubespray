@@ -20,6 +20,11 @@
   roles:
     - { role: kubespray-defaults }
     - { role: ansible-role-nfs }
+  tasks:
+    - file:
+        directory: yes
+        path: "/persistentvolumes"
+        mode: 777
 
 
 - hosts: k8s_cluster:etcd
