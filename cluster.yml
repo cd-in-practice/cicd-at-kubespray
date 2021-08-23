@@ -17,14 +17,21 @@
   gather_facts: True
   any_errors_fatal: "{{ any_errors_fatal | default(true) }}"
   environment: "{{ proxy_disable_env }}"
+  vars:
+    nfs_exports: [
+    "/srv/nfs4 *(rw,async,no_root_squash)",
+    "/persistentvolumes *(rw,async,no_root_squash)"
+    ]
   roles:
     - { role: kubespray-defaults }
     - { role: ansible-role-nfs }
   tasks:
     - file:
-        directory: yes
+        state: directory
         path: "/persistentvolumes"
-        mode: 777
+        mode: '0777'
+        recurse: yes
+
 
 
 - hosts: k8s_cluster:etcd
