@@ -206,6 +206,10 @@ Vagrant.configure("2") do |config|
       # Disable swap for each vm
       node.vm.provision "shell", inline: "swapoff -a"
 
+      node.vm.provision "shell", inline: "yum -y install ntp"
+      node.vm.provision "shell", inline: "service ntpd start"
+      node.vm.provision "shell", inline: "hwclock --systohc --localtime"
+
       # ubuntu1804 and ubuntu2004 have IPv6 explicitly disabled. This undoes that.
       if ["ubuntu1804", "ubuntu2004"].include? $os
         node.vm.provision "shell", inline: "rm -f /etc/modprobe.d/local.conf"
