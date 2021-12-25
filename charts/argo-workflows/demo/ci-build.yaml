@@ -1,0 +1,35 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Workflow
+metadata:
+  name: ci-build
+  labels:
+    workflows.argoproj.io/archive-strategy: "false"
+  annotations:
+    workflows.argoproj.io/description: |
+      ci-build
+spec:
+  entrypoint: main
+  templates:
+  - name: main
+    container:
+      image: busybox:latest
+      command: ["echo"]
+      args: ["hello world"]
+  # - name: build-golang-example
+  #   inputs:
+  #     artifacts:
+  #     - name: code
+  #       path: /go/src/github.com/golang/example
+  #       git:
+  #         repo: https://github.com/golang/example.git
+  #         revision: cfe12d6
+  #   container:
+  #     image: golang:1.8
+  #     command: [sh, -c]
+  #     args: ["
+  #       cd /go/src/github.com/golang/example/hello &&
+  #       go build -v .
+  #     "]
+  #     volumeMounts:
+  #     - name: workdir
+  #       mountPath: /go
