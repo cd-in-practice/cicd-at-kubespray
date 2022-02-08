@@ -283,19 +283,16 @@ makeUserJob:
 ##
 buckets:
   #   # Name of the bucket
-  # - name: bucket1
-  #   # Policy to be set on the
-  #   # bucket [none|download|upload|public]
-  #   policy: none
-  #   # Purge if bucket exists already
-  #   purge: false
-  #   # set versioning for
-  #   # bucket [true|false]
-  #   versioning: false
-  # - name: bucket2
-  #   policy: none
-  #   purge: false
-  #   versioning: true
+  - name: argo-workflows
+    # Policy to be set on the
+    # bucket [none|download|upload|public]
+    policy: none
+    # Purge if bucket exists already
+    purge: false
+    # set versioning for
+    # bucket [true|false]
+    versioning: false
+
 
 ## Additional Annotations for the Kubernetes Job makeBucketJob
 makeBucketJob:
